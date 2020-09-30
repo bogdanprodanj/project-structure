@@ -1,0 +1,9 @@
+# Created by .ignore support plugin (hsz.mobi)
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+.idea/

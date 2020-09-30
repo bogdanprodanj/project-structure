@@ -1,0 +1,134 @@
+# How to structure your project
+1 Oct 2020
+
+Bogdan Prodan
+Go Developer at Lohika
+bprodan@lohika.com
+
+##
+
+.image img/evolution.png _ 400
+
+## Microservices
+
+- Highly maintainable and testable
+- Loosely coupled
+- Independently deployable
+- Organized around business capabilities
+- Owned by a small team
+
+## SOLID
+
+- S : Single responsibility principle
+_(A class should have one, and only one, reason to change or do one thing and do it well)_
+- O : Open/Closed principle
+_(A module should be open for extensions, but closed for modification)_
+- L : Liskov substitution principle
+_(Two types are substitutable if they exhibit behaviour such that the caller is unable to tell the difference)_
+- I : Interface segregation principle
+_(Clients should not be forced to depend on methods they do not use or
+many client specific interfaces are better than one general purpose interface)_
+- D : Dependency inversion principle
+_(High-level modules should not depend on low-level modules. Both should depend on abstractions or do not depend upon concretions)_
+
+## Application paradigm
+
+- Interface
+- Service
+- Storage
+- Provider
+
+## Interface
+
+    ...
+    └── server
+        ├── gql
+        ├── http
+        ├── rpc
+        ├── tcp
+        └── udp
+
+- entry point for the application
+- use server-specific and domain models
+- uses services by means of interfaces
+
+## Service
+
+    ...
+    └── service
+        ├── mail
+        ├── organization
+        ├── scheduler
+        ├── user
+        └── walter
+
+- where all the business logic lives
+- not aware of the interface layer
+- use domain models
+- uses storage and providers by means of interfaces
+
+## Storage
+    ...
+    └── storage
+        ├── postgres
+        ├── mysql
+        ├── cassandra
+        └── file
+            ├── local
+            └── s3
+        └── redis
+
+    ...
+    └── cache
+        ├── memcache
+        └── redis
+
+- persistence layer
+- not aware of the service layer
+- use domain models
+
+## Providers (repos)
+
+External resources that are reachable through the network connections
+
+- http/rpc calls
+- pub/sub brokers
+- queues
+- cloud services
+
+## Auxiliary packages
+
+- cmd
+- config
+- context
+- examples
+- gen
+- models
+- proto (submodule)
+- test
+- internal
+
+## Internal org libs
+
+- DBs
+- Kafka
+- logger
+- http/rpc
+
+## Bad packages
+
+Avoid vague and ambiguous package names
+
+- common
+- utils
+- private
+- misc
+
+ [[url][label]]
+
+## Sources
+
+.link https://tutorialedge.net/golang/go-project-structure-best-practices go-project-structure-best-practices
+.link https://github.com/akhripko/dummy dymmy
+.link https://dave.cheney.net/2016/08/20/solid-go-design SOLID
+.link https://github.com/go-kit/kit go-kit
