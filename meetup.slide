@@ -117,18 +117,16 @@ External resources that are reachable through the network connections
 
 ## Bad packages
 
-Avoid vague and ambiguous package names
+Avoid vague and ambiguous package names!
 
 - common
 - utils
 - private
 - misc
 
- [[url][label]]
-
 ## Sources
 
 .link https://tutorialedge.net/golang/go-project-structure-best-practices go-project-structure-best-practices
-.link https://github.com/akhripko/dummy dymmy
+.link https://github.com/akhripko/dummy dummy
 .link https://dave.cheney.net/2016/08/20/solid-go-design SOLID
 .link https://github.com/go-kit/kit go-kit
